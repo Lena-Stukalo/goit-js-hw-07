@@ -11,13 +11,7 @@ const galleryList = galleryItems
   .join(" ");
 gallery.innerHTML = galleryList;
 
-gallery.addEventListener("click", (event) => {
-  event.preventDefault();
-  if (!event.target.classList.contains("gallery__image")) {
-    return;
-  }
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
+new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
 });

@@ -31,9 +31,20 @@ gallery.addEventListener("click", (event) => {
     return;
   }
   const orignlImg = event.target.dataset.source;
-
-  const instance = basicLightbox.create(`<img src="${orignlImg}">`);
+  const instance = basicLightbox.create(`<img src="${orignlImg}">`, {
+    onShow: (instance) => {
+      window.addEventListener("keydown", onEscClose);
+    },
+    onClose: (instance) => {
+      window.removeEventListener("keydown", onEscClose);
+    },
+  });
   instance.show();
 
-  console.log(orignlImg);
+  function onEscClose(event) {
+    if (event.code === "Escape");
+    {
+      instance.close();
+    }
+  }
 });
